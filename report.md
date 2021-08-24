@@ -1,58 +1,57 @@
 ---
-# Please do not delete --- above :) 
+# Please do not delete --- above :)
 
 # ========================================================================
-# Automatically edited by GitHub actions, please do not modify     | START 
+# Automatically edited by GitHub actions, please do not modify     | START
 # ==============================================================
 report_url: https://github.com/brainhack-proceedings/template
 
 last_changed: 2020-12-01 08:01 UTC
 
 auth_created: r03ert0
-# ===============================================================  | END 
+# ===============================================================  | END
 
-# Name of the event. 
+# Name of the event.
 # -----------------
-event: 'OHBM Brainhack 2020'
+event: 'Brainhack Montreal 2020'
 
-# The title of your report. 
+# The title of your report.
 # -------------------------
-title:  'An automagical report generator for BrainHack Proceedings'
+title:  '`load_confounds`: fMRIprep confound regressor selection tool'
 
 # Please SET this url to your GitHub project repo!
-# ------------------------------------------------- 
-url: https://github.com/username/project_repository 
+# -------------------------------------------------
+url: https://github.com/SIMEXP/load_confounds
 
-# Please edit affiliation details. The affiliation 
+# Please edit affiliation details. The affiliation
 # ids defined here will be used in the author list.
-# ------------------------------------------------- 
+# -------------------------------------------------
 affiliations:
 - id: aff1
-  orgname: 'Research Lab 1, Organization 1'
-  street: street_name_goes_here 
-  postcode: post_code_goes_here
-  city: Montreal
-  state: Quebec
-  country: Canada
+  orgname: 'Neuroscience, Brighton and Sussex Medical School'
+  street: 'Trafford Centre'
+  postcode: 'BN1 9RX'
+  city: 'Brighton'
+  state: 'East Sussex'
+  country: 'United Kingdom'
 - id: aff2
-  orgname: 'Research Lab 2, Organization 2'
-  street: street_name_goes_here 
-  postcode: post_code_goes_here
+  orgname: 'Centre de recherche de l'Institut universitaire de gériatrie de Montréal'
+  street: '4565 Queen Mary Road'
+  postcode: 'H3W 1W6'
   city: Montreal
   state: Quebec
   country: Canada
-
 # Please list the authors.
 # If an author has multiple affiliations, please
 # add corref field and indicate the primary affiliation.
 # -----------------------------------------------------
 author:
-- initials: JD
-  surname: Doe
-  firstname: Jane
-  email: janedoe@gmail.com
+- initials: HTW
+  surname: Wang
+  firstname: Hao-Ting
+  email: wang.hao-ting@criugm.qc.ca
   affiliation: aff1, aff2
-  corref: aff1
+  corref: aff2
   # Please make sure that you set corref (corresponding aff) if you have
   # multiple afiliations
 - initials: JJD
@@ -65,32 +64,32 @@ author:
 # Please write a brief summary of your project.
 # This abstract will (only) appear on the webpage.
 # -------------------------------------------------
-summary: Powered by GitHub Actions, Pandoc and Hugo, this simple repository can turn itself into a full-blown article page where you can download the PDF! Zero installation. We hope that this little project encourages all the great hackathon participants to create nifty reports worthy of their projects. If you have any suggestions or improvements, please feel free to open an issue or make a pull request at the brainhack-proceegins/template repository.
+summary: `load_confounds` is a tool for loading a sensible subset of the fMRI confounds generated with fMRIprep in python (Esteban et al., 2018). The outputs can be directly passes to Nilearn NifitMasker for denoising. The aim at Brainhack MTL 2020 is to implement new strategies as well as imporving the existing functions and documentations for a potential Beta release.
 
 # Please add 1 to 3 tags
 tags:
-  - tag1
-  - tag2
-  - tag3
+  - confounds
+  - fMRIprep
+  - nilearn
 
 # Please comment out the following 5 lines if you have no supplemental material.
-supplemental:
-  - name: Material 1
-    url: https://osf.io 
-  - name: Material 2 
-    url: https://zenodo.org 
+# supplemental:
+#   - name: Material 1
+#     url: https://osf.io
+#   - name: Material 2
+#     url: https://zenodo.org
 
-coi: Please add if there are competing interests. Otherwise, type None.
+coi: None.
 
-acknow: The authors would like to thank the organizers and attendees of OHBM Brainhack 2020.
+acknow: The authors would like to thank the organizers and attendees of Brainhack Global 2020 and Brainhack Montreal 2020.
 
-contrib: JD and JJD wrote the software, JD performed tests, and JD and JJD wrote the report.
+contrib: HTW [initials here] wrote the software, [initlas here] add new documentations, and HTW [initlas here] wrote the report.
 
 # Please comment out the following 4 lines if no reviewer has been assigned to you yet.
-reviewers:
-  - name: Agah
-    surname: Karakuzu
-    gh_handle: agahkarakuzu
+# reviewers:
+#   - name: Agah
+#     surname: Karakuzu
+#     gh_handle: agahkarakuzu
 
 # Show/hide the BinderHub (mybinder.org) badge
 # Accepted values: true/false (case sensitive)
@@ -101,11 +100,12 @@ binder: true
 # Accepted values: true/false (case sensitive)
 hypothesis: true
 
-# Please do not delete --- below :) 
+# Please do not delete --- below :)
 ---
 
 # Introduction
-The bibliography \code{report.bib} must respect \href{http://www.bibtex.org/Using/}{BibTeX} format. 
+
+<!-- The bibliography \code{report.bib} must respect \href{http://www.bibtex.org/Using/}{BibTeX} format.
 You can cite entries in your bibliography using their tags:
 
 \begin{itemize}
@@ -118,20 +118,93 @@ You can cite entries in your bibliography using their tags:
 
 Remember that this is a LaTex flavored markdown. Therefore, some characters must be used with an escape character within the text:
 
-\code{\& \% \$ \# \_ \{  \} \textbackslash}
+\code{\& \% \$ \# \_ \{  \} \textbackslash} -->
+fMRIprep (REF) is a popular minimal preprocessing software for functional MRI data.
+‘Minimal preprocessing’ refers to motion correction, field unwarping, normalization, bias field correction, and brain extraction.
+Confound regression and smoothing are exculded from the workflow.
+Instead, fMRIprep provides users with a large set of potential confound regressors that covers many denoising strategies.
+The users will have to select the confound regressors for denoising in the subsequent analysis.
+Loading a sensible subset of confounds is difficult and error prone for many strategies, such as ICA-AROMA and CompCor.
+\code{load\_confounds} can access confound variables and provides preset strategies for confound selections.
+The loaded format is competible with \code{nilearn} analysis functions such as \code{NiftiMasker} and the GLM modules.
+The aim is to provide a easy and foolproof API for users to perform subsequent denoising of \code{fMRIprep} output.
+
+# Progress
+
+At Brianhack Global Montreal 2020, the aim is to prepare the package ready for a potential Beta release.
+The related issues involves completing the strategies missing and improve the user experience with better examples and error messages.
+Several issues has been identified before Brainhack and the full discussion can be found under \href{https://github.com/SIMEXP/load\_confounds/issues\?q\=is\%3Aissue\+label\%3AbrainhackMTL2020\+i\s%3Aclosed}{\code{load\_confounds} GitHub issue}.
+
+During Brainhack the following issues have been discussed and/or resolved:
+
+## Strategies
+
+We worked on three strategies:
+\begin{itemize}
+  \item ICA-AROMA (contributed by Hao-Ting Wang)
+  \item Scrubbing (contributed by Steven Meisler)
+  \item Anatomical CompCor (contributed by Steven Meisler)
+\end{itemize}
+
+## Demo
+
+An executable demo using the nilearn developmental fMRI dataset (\href{https://openneuro.org/datasets/ds000228}{OpenNeuro ds000228}) was added. (contributed by Michael W. Weiss)
+
+## Error message
+
+Exception raised when failing to find params in the confounds. (Contributed by François Paugam)
+
+## Identify test dataset
+
+\href{https://openneuro.org/datasets/ds003}{OpenNeuro ds003} is now the new test data. (Discussions amongs Pierre Bellec, Hao-Ting Wang, Elizabeth DuPre, and Chris Markiewicz)
+Pierre Bellec plans to preporecess \href{https://openneuro.org/datasets/ds000228}{OpenNeuro ds000228} with all possible confounds.
+
+## All contributor bot
+
+\code{allcontributors} bot is added to track community contributions (Contributed by Pierre Bellec).
+
+## Add \code{load\_confounds} to \code{nixtract}
+
+In addition to the main package, there was a collaborative project with the developers of \href{https://github.com/danjgale/nixtract}{\code{nixtract}}.
+\code{nixtract} is a tool that extract and process timeseries data from neuroimaging files.
+Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \code{nixtract} for reading fMRIPrep confound variables.
+
+# Results
+
+\code{load\_confounds} can now the following strategies from Ciric et al. \cite{ciric:2017}. The following table highlights the relevant options:
+
+\begin{center}
+\begin{tabular}{ | m{5em} | c | c | c |  c |  c |  c |  c |  }
+  \hline
+  Strategy             & \code{high\_pass} & \code{motion} & \code{wm\_csf} & \code{global} & \code{compcor} & \code{ica\_aroma} & \code{scrub} \\
+  \hline
+  \code{Params2}       & x                &               & \code{basic}  &               &                &                  &              \\
+  \code{Params6}       & x                & \code{basic}  &               &               &                &                  &              \\
+  \code{Params9}       & x                & \code{basic}  & \code{basic}  & \code{basic}  &                &                  & \code{full}  \\
+  \code{Params9scrub}  & x                & \code{basic}  & \code{basic}  &               &                &                  &              \\
+  \code{Params24}      & x                & \code{full}   &               &               &                &                  &              \\
+  \code{Params36}      & x                & \code{full}   & \code{full}   & \code{full}   &                &                  & \code{full}  \\
+  \code{Params36scrub} & x                & \code{full}   & \code{full}   &               &                &                  &              \\
+  \code{AnatCompCor}   & x                & \code{full}   &               &               & \code{anat}    &                  &              \\
+  \code{TempCompCor}   & x                &               &               &               & \code{temp}    &                  &              \\
+  \code{ICAAROMA}      & x                &               & \code{basic}  &               &                & \code{full}      &              \\
+  \code{AROMAGSR}      & x                &               & \code{basic}  & \code{basic}  &                & \code{full}      &              \\
+  \code{AggrICAAROMA}  & x                &               & \code{basic}  & \code{basic}  &                & \code{basic}     &              \\
+  \hline
+\end{tabular}
+\end{center}
+
+The future direction is to integrate \code{load\_confounds} as part of \code{nilearn} for better reach to wider range of users that can be benifited from the package.
+To facilitate the nilearn inegration, we will add \code{sample\_mask} to support volume-sensoring based scrubbing and improve the \code{nilearn} \code{NiftiMasker} related feature.
 
 
-# Section
-You can create additional sections as you prefer. Section title levels are determined by the number of hastags as in a traditional markdown file.
-
-## Subsection
-Subsection content goes here. You can create numerated lists:
+<!-- Subsection content goes here. You can create numerated lists:
 
 \begin{enumerate}
   \item The labels consists of sequential numbers.
   \item The numbers starts at 1 with every call to the enumerate environment.
-\end{enumerate}
-
+\end{enumerate} -->
+<!--
 ### Equations & formulas
 You can add mathematical formulas. Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$.
 \smallskip
@@ -144,9 +217,9 @@ You can add mathematical formulas. Single dollars ($) are required for inline ma
 
 and refer to \ref{eq:1} from text.
 
-### Hypothes.is 
-We enabled \href{https://web.hypothes.is/}{hypothes.is} for the brainhack proceeding reports. This way, you can annotate, highlight and tag the content collaboratively! You may choose to share your insights with everyone, or keep them private.      
-
+### Hypothes.is
+We enabled \href{https://web.hypothes.is/}{hypothes.is} for the brainhack proceeding reports. This way, you can annotate, highlight and tag the content collaboratively! You may choose to share your insights with everyone, or keep them private. -->
+<!--
 # Results
 Figure files must be placed at the \code{figures} folder. You can include figures using the following block:
 
@@ -158,6 +231,6 @@ Figure files must be placed at the \code{figures} folder. You can include figure
 
 \end{figure}
 
-Note that \code{width=.47 \textbackslash textwidth} above sets scales the figure size in the PDF. To change attributes of the figures on the webpage, please see \code{/figures/figures.css}. 
+Note that \code{width=.47 \textbackslash textwidth} above sets scales the figure size in the PDF. To change attributes of the figures on the webpage, please see \code{/figures/figures.css}.
 
-To refer a figure in the text, you need to use the respective label defined in its caption: Fig. \ref{Figure-1}
+To refer a figure in the text, you need to use the respective label defined in its caption: Fig. \ref{Figure-1} -->
