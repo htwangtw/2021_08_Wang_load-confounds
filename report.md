@@ -1,42 +1,42 @@
 ---
-# Please do not delete --- above :) 
+# Please do not delete --- above :)
 
 # ========================================================================
-# Automatically edited by GitHub actions, please do not modify     | START 
+# Automatically edited by GitHub actions, please do not modify     | START
 # ==============================================================
 report_url: https://github.com/brainhack-proceedings/template
 
 last_changed: 2020-12-01 08:01 UTC
 
 auth_created: r03ert0
-# ===============================================================  | END 
+# ===============================================================  | END
 
-# Name of the event. 
+# Name of the event.
 # -----------------
-event: 'OHBM Brainhack 2020'
+event: 'Brainhack Global 2020 Montreal'
 
-# The title of your report. 
+# The title of your report.
 # -------------------------
-title:  'An automagical report generator for BrainHack Proceedings'
+title:  ' Load fMRIprep confounds in python'
 
 # Please SET this url to your GitHub project repo!
-# ------------------------------------------------- 
-url: https://github.com/username/project_repository 
+# -------------------------------------------------
+url: https://github.com/htwangtw/2021_08_Wang_load-confounds
 
-# Please edit affiliation details. The affiliation 
+# Please edit affiliation details. The affiliation
 # ids defined here will be used in the author list.
-# ------------------------------------------------- 
+# -------------------------------------------------
 affiliations:
 - id: aff1
-  orgname: 'Research Lab 1, Organization 1'
-  street: street_name_goes_here 
-  postcode: post_code_goes_here
+  orgname: 'CRIUGM'
+  street: '4565 chemin Queen Mary'
+  postcode: 'H3W 1W4'
   city: Montreal
   state: Quebec
   country: Canada
 - id: aff2
   orgname: 'Research Lab 2, Organization 2'
-  street: street_name_goes_here 
+  street: street_name_goes_here
   postcode: post_code_goes_here
   city: Montreal
   state: Quebec
@@ -47,10 +47,10 @@ affiliations:
 # add corref field and indicate the primary affiliation.
 # -----------------------------------------------------
 author:
-- initials: JD
-  surname: Doe
-  firstname: Jane
-  email: janedoe@gmail.com
+- initials: HTW
+  surname: Wang
+  firstname: Hao-Ting
+  email: htwangtw@gmail.com
   affiliation: aff1, aff2
   corref: aff1
   # Please make sure that you set corref (corresponding aff) if you have
@@ -65,32 +65,32 @@ author:
 # Please write a brief summary of your project.
 # This abstract will (only) appear on the webpage.
 # -------------------------------------------------
-summary: Powered by GitHub Actions, Pandoc and Hugo, this simple repository can turn itself into a full-blown article page where you can download the PDF! Zero installation. We hope that this little project encourages all the great hackathon participants to create nifty reports worthy of their projects. If you have any suggestions or improvements, please feel free to open an issue or make a pull request at the brainhack-proceegins/template repository.
+summary: `load_confounds` is a tool for loading a sensible subset of the fMRI confounds generated with fMRIprep in python (Esteban et al., 2018). The outputs can be directly passes to Nilearn NifitMasker for denoising. The aim at Brainhack MTL 2020 is to implement new strategies as well as imporving the existing functions and documentations for a potential Beta release.
 
 # Please add 1 to 3 tags
 tags:
-  - tag1
-  - tag2
-  - tag3
+  - fmriprep
+  - confounds
+  - nilearn
 
 # Please comment out the following 5 lines if you have no supplemental material.
-supplemental:
-  - name: Material 1
-    url: https://osf.io 
-  - name: Material 2 
-    url: https://zenodo.org 
+# supplemental:
+#   - name: Material 1
+#     url: https://osf.io
+#   - name: Material 2
+#     url: https://zenodo.org
 
-coi: Please add if there are competing interests. Otherwise, type None.
+coi: None
 
-acknow: The authors would like to thank the organizers and attendees of OHBM Brainhack 2020.
+acknow: The authors would like to thank the organizers and attendees of Brainhack Global Montreal 2020.
 
-contrib: JD and JJD wrote the software, JD performed tests, and JD and JJD wrote the report.
+contrib: HTW wrote the software, HTW wrote the report.
 
 # Please comment out the following 4 lines if no reviewer has been assigned to you yet.
-reviewers:
-  - name: Agah
-    surname: Karakuzu
-    gh_handle: agahkarakuzu
+# reviewers:
+#   - name: Agah
+#     surname: Karakuzu
+#     gh_handle: agahkarakuzu
 
 # Show/hide the BinderHub (mybinder.org) badge
 # Accepted values: true/false (case sensitive)
@@ -101,11 +101,11 @@ binder: true
 # Accepted values: true/false (case sensitive)
 hypothesis: true
 
-# Please do not delete --- below :) 
+# Please do not delete --- below :)
 ---
 
 # Introduction
-The bibliography \code{report.bib} must respect \href{http://www.bibtex.org/Using/}{BibTeX} format. 
+The bibliography \code{report.bib} must respect \href{http://www.bibtex.org/Using/}{BibTeX} format.
 You can cite entries in your bibliography using their tags:
 
 \begin{itemize}
@@ -144,8 +144,8 @@ You can add mathematical formulas. Single dollars ($) are required for inline ma
 
 and refer to \ref{eq:1} from text.
 
-### Hypothes.is 
-We enabled \href{https://web.hypothes.is/}{hypothes.is} for the brainhack proceeding reports. This way, you can annotate, highlight and tag the content collaboratively! You may choose to share your insights with everyone, or keep them private.      
+### Hypothes.is
+We enabled \href{https://web.hypothes.is/}{hypothes.is} for the brainhack proceeding reports. This way, you can annotate, highlight and tag the content collaboratively! You may choose to share your insights with everyone, or keep them private.
 
 # Results
 Figure files must be placed at the \code{figures} folder. You can include figures using the following block:
@@ -158,6 +158,6 @@ Figure files must be placed at the \code{figures} folder. You can include figure
 
 \end{figure}
 
-Note that \code{width=.47 \textbackslash textwidth} above sets scales the figure size in the PDF. To change attributes of the figures on the webpage, please see \code{/figures/figures.css}. 
+Note that \code{width=.47 \textbackslash textwidth} above sets scales the figure size in the PDF. To change attributes of the figures on the webpage, please see \code{/figures/figures.css}.
 
 To refer a figure in the text, you need to use the respective label defined in its caption: Fig. \ref{Figure-1}
