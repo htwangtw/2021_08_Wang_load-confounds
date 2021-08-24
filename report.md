@@ -54,25 +54,24 @@ affiliations:
 # add corref field and indicate the primary affiliation.
 # -----------------------------------------------------
 author:
+- initials: PB
+  surname: Bellec
+  firstname: Pierre
+  email: pierre.bellec@criugm.qc.ca
+  affiliation: criugm
 - initials: HTW
   surname: Wang
   firstname: Hao-Ting
-  email: htwangtw@gmail.com
+  email: wang.hao-ting@criugm.qc.ca
   affiliation: criugm, bsms
   corref: criugm
   # Please make sure that you set corref (corresponding aff) if you have
   # multiple afiliations
-- initials: JJD
-  surname: Doe
-  firstname: John J.
-  email: johndoe@gmail.com
-  affiliation: aff2
-  url: https://jonhdoe.website.com
 
 # Please write a brief summary of your project.
 # This abstract will (only) appear on the webpage.
 # -------------------------------------------------
-summary: load_confounds is a tool for loading a sensible subset of the fMRI confounds generated with fMRIprep in python (Esteban et al., 2018). The outputs can be directly passes to nilearn NifitMasker for denoising. The aim at Brainhack MTL 2020 is to implement new strategies as well as imporving the existing functions and documentations for a potential Beta release.
+summary: load_confounds is a tool for loading a sensible subset of the fMRI confounds generated with fMRIprep in python (Esteban et al., 2019). The outputs can be directly passes to nilearn NifitMasker for denoising. The aim at Brainhack MTL 2020 is to implement new strategies as well as imporving the existing functions and documentations for a potential Beta release.
 
 # Please add 1 to 3 tags
 tags:
@@ -118,7 +117,7 @@ fMRIprep \cite{fmriprep:2019} is a popular minimal preprocessing software for fu
 Confound regression and smoothing are exculded from the workflow.
 Instead, fMRIprep provides users with a large set of potential confound regressors that covers many denoising strategies.
 The users will have to select the confound regressors for denoising in the subsequent analysis.
-Loading a sensible subset of confounds is difficult and error prone for many strategies, such as ICA-AROMA and CompCor.
+Loading a sensible subset of confounds is difficult and error prone for many strategies, such as ICA-AROMA \cite{icaaroma:2015} and CompCor \cite{compcor:2007}.
 \code{load\_confounds} can access confound variables and provides preset strategies for confound selections.
 The loaded format is competible with \code{nilearn} analysis functions such as \code{NiftiMasker} and the GLM modules.
 The aim is to provide a easy and foolproof API for users to perform subsequent denoising of \code{fMRIprep} output.
@@ -126,32 +125,37 @@ The aim is to provide a easy and foolproof API for users to perform subsequent d
 # Progress
 
 At Brianhack Global Montreal 2020, the aim is to prepare the package ready for a potential Beta release.
-The related issues involves completing the strategies missing and improve the user experience with better examples and error messages.
+To prepare for the release, related issues involves completing the strategies missing and improve the user experience with better examples and error messages.
 Several issues has been identified before Brainhack and the full discussion can be found under \code{load\_confounds} \href{https://github.com/SIMEXP/load_confounds/issues?q=is%3Aissue+label%3AbrainhackMTL2020+is%3Aclosed}{GitHub issue page}.
-
-During Brainhack the following issues have been discussed and/or resolved:
+Participants at Brainhack were encouraged to pick up existing issues from the list.
+The following issues have been discussed and/or resolved:
 
 ## Strategies
 
 We worked on three strategies:
 \begin{itemize}
-  \item ICA-AROMA (contributed by Hao-Ting Wang)
-  \item Scrubbing (contributed by Steven Meisler)
-  \item Anatomical CompCor (contributed by Steven Meisler)
+  \item Added ICA-AROMA \cite{icaaroma:2015} (contributed by Hao-Ting Wang)
+  \item Added Scrubbing \cite{power:2012}(contributed by Steven Meisler)
+  \item Improved the anatomical mask selection for anatomical CompCor \cite{compcor:2007} (contributed by Steven Meisler)
 \end{itemize}
 
 ## Demo
 
-An executable demo using the nilearn developmental fMRI dataset (\href{https://openneuro.org/datasets/ds000228}{OpenNeuro ds000228}) was added. (contributed by Michael W. Weiss)
+An executable demo using the nilearn developmental fMRI dataset (\href{https://openneuro.org/datasets/ds000228}{OpenNeuro ds000228}) was added (contributed by Michael W. Weiss).
+The demo was adapted from an exisitng nilearn example on denoising \href{https://nilearn.github.io/auto_examples/03_connectivity/plot_signal_extraction.html#sphx-glr-auto-examples-03-connectivity-plot-signal-extraction-py}{'Extracting signals from a brain parcellation'}.
+This example notebook show how to extract signals from a brain parcellation and compute a correlation matrix, using different denoising strategies using the package.
 
 ## Error message
 
-Exception raised when failing to find params in the confounds. (Contributed by François Paugam)
+New class \code{NotFoundConfoundException} was added for collecting all the missing parameter needed for the given noise component(s).
+A final error would be raised with the list of all parameters missing, rather than just the first encountered missing parameter. (Contributed by Michael W. Weiss and François Paugam)
 
 ## Identify test dataset
 
-\href{https://openneuro.org/datasets/ds003}{OpenNeuro ds003} is now the new test data. (Discussions amongs Pierre Bellec, Hao-Ting Wang, Elizabeth DuPre, and Chris Markiewicz)
-Pierre Bellec plans to preporecess \href{https://openneuro.org/datasets/ds000228}{OpenNeuro ds000228} with all possible confounds.
+\href{https://openneuro.org/datasets/ds003}{OpenNeuro ds003} is adopted as the new test data, including all ICA-AROMA related components.
+However, non-steady-state volume and motion estmation mertic RMSD \cite{jenkinson:2002} are still missing.
+We consider to preprocess the nilearn demo dataset (\href{https://openneuro.org/datasets/ds000228}{OpenNeuro ds000228}) with fMRIprep LTS release for getting all possible confounds for the future.
+(Discussions amongs Pierre Bellec, Hao-Ting Wang, Elizabeth DuPre, and Chris Markiewicz)
 
 ## All contributor bot
 
@@ -165,7 +169,19 @@ Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \c
 
 # Results
 
-\code{load\_confounds} can now the following strategies from Ciric et al. \cite{ciric:2017}. The following table highlights the relevant options:
+\code{load_confounds} has now covered most of the noise components used in Ciric et al. \cite{ciric:2017}.
+The following noise components and a set of paramaters for dedicated approaches are supported.
+\begin{itemize}
+  \item \code{motion}: the motion parameters including 6 translation/rotation (\code{basic}), and optionally derivatives, squares, and squared derivatives (\code{full}).
+  \item \code{high_pass}: basis of discrete cosines covering slow time drift frequency band.
+  \item \code{wm_csf} the average signal of white matter and cerebrospinal fluid masks (\code{basic}), and optionally derivatives, squares, and squared derivatives (\code{full}).
+  \item \code{global}: the global signal (\code{basic}), and optionally derivatives, squares, and squared derivatives (\code{full}).
+  \item \code{compcor} \cite{compcor:2007}: the results of a PCA applied on a mask based on either anatomy (\code{anat}), temporal variance (\code{temp}), or both (\code{combined}).
+  \item \code{ica_aroma} \cite{icaaroma:2015}: the results of an idependent component analysis (ICA) followed by identification of noise components. This can be implementing by incorporating ICA regressors (\code{basic}) or directly loading a denoised file generated by fMRIprep (\code{full}).
+  \item \code{scrub} \cite{power:2012}: regressors coding for time frames with excessive motion, using threshold on frame displacement and standardized DVARS (\code{basic}) and suppressing short time windows using the (Power et al., 2014) appreach (\code{full}).
+\end{itemize}
+
+\code{load\_confounds} can produce the following strategies from Ciric et al. \cite{ciric:2017}. The following table highlights the relevant options:
 
 \begin{tabular}{ | l | c | c | c |  c |  c |  c |  c |  }
   \hline
