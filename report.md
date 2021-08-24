@@ -127,7 +127,7 @@ The aim is to provide a easy and foolproof API for users to perform subsequent d
 
 At Brianhack Global Montreal 2020, the aim is to prepare the package ready for a potential Beta release.
 The related issues involves completing the strategies missing and improve the user experience with better examples and error messages.
-Several issues has been identified before Brainhack and the full discussion can be found under \code{load\_confounds} GitHub issue page .
+Several issues has been identified before Brainhack and the full discussion can be found under \code{load\_confounds} \href{https://github.com/SIMEXP/load_confounds/issues?q=is%3Aissue+label%3AbrainhackMTL2020+is%3Aclosed}{GitHub issue page}.
 
 During Brainhack the following issues have been discussed and/or resolved:
 
