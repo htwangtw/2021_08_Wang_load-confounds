@@ -159,7 +159,7 @@ Pierre Bellec plans to preporecess \href{https://openneuro.org/datasets/ds000228
 
 ## Add \code{load\_confounds} to \code{nixtract}
 
-In addition to the main package, there was a collaborative project with the developers of \href{https://github.com/danjgale/nixtract}{\code{nixtract}}.
+In addition to the main package, there was a collaborative project with the developers of \href{https://github.com/danjgale/nixtract}{nixtract}.
 \code{nixtract} is a tool that extract and process timeseries data from neuroimaging files.
 Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \code{nixtract} for reading fMRIPrep confound variables.
 
