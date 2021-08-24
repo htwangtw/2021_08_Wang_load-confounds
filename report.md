@@ -4,11 +4,11 @@
 # ========================================================================
 # Automatically edited by GitHub actions, please do not modify     | START
 # ==============================================================
-report_url: https://github.com/brainhack-proceedings/template
+report_url: https://github.com/htwangtw/2021_08_Wang_load-confounds
 
-last_changed: 2020-12-01 08:01 UTC
+last_changed: 2021-08-24 18:41 UTC
 
-auth_created: r03ert0
+auth_created: htwangtw
 # ===============================================================  | END
 
 # Name of the event.
