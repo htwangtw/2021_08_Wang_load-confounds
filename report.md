@@ -169,7 +169,7 @@ Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \c
 
 # Results
 
-\code{load_confounds} has now covered most of the noise components used in Ciric et al. \cite{ciric:2017}.
+\code{load\_confounds} has now covered most of the noise components used in Ciric et al. \cite{ciric:2017}.
 The following noise components and a set of paramaters for dedicated approaches are supported.
 \begin{itemize}
   \item \code{motion}: the motion parameters including 6 translation/rotation (\code{basic}), and optionally derivatives, squares, and squared derivatives (\code{full}).
