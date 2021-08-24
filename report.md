@@ -159,7 +159,7 @@ Pierre Bellec plans to preporecess \href{https://openneuro.org/datasets/ds000228
 
 ## Add \code{load\_confounds} to \code{nixtract}
 
-In addition to the main package, there was a collaborative project with the developers of \href{https://github.com/danjgale/nixtract}{nixtract}.
+In addition to the main package, there was a collaborative project with the developers of \href{https://github.com/danjgale/nixtract}{\code{nixtract}}.
 \code{nixtract} is a tool that extract and process timeseries data from neuroimaging files.
 Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \code{nixtract} for reading fMRIPrep confound variables.
 
@@ -167,7 +167,7 @@ Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \c
 
 \code{load\_confounds} can now the following strategies from Ciric et al. \cite{ciric:2017}. The following table highlights the relevant options:
 
-\begin{tabular}{ | m | c | c | c |  c |  c |  c |  c |  }
+\begin{tabular}{ | l | c | c | c |  c |  c |  c |  c |  }
   \hline
   Strategy             & \code{high\_pass} & \code{motion} & \code{wm\_csf} & \code{global} & \code{compcor} & \code{ica\_aroma} & \code{scrub} \\
   \hline
