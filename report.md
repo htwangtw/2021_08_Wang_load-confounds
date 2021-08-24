@@ -72,7 +72,7 @@ author:
 # Please write a brief summary of your project.
 # This abstract will (only) appear on the webpage.
 # -------------------------------------------------
-summary: \code{load_confounds} is a tool for loading a sensible subset of the fMRI confounds generated with fMRIprep in python (Esteban et al., 2018). The outputs can be directly passes to Nilearn NifitMasker for denoising. The aim at Brainhack MTL 2020 is to implement new strategies as well as imporving the existing functions and documentations for a potential Beta release.
+summary: load_confounds is a tool for loading a sensible subset of the fMRI confounds generated with fMRIprep in python (Esteban et al., 2018). The outputs can be directly passes to nilearn NifitMasker for denoising. The aim at Brainhack MTL 2020 is to implement new strategies as well as imporving the existing functions and documentations for a potential Beta release.
 
 # Please add 1 to 3 tags
 tags:
@@ -113,7 +113,7 @@ hypothesis: true
 
 # Introduction
 
-fMRIprep (REF) is a popular minimal preprocessing software for functional MRI data.
+fMRIprep \cite{fmriprep:2019} is a popular minimal preprocessing software for functional MRI data.
 'Minimal preprocessing' refers to motion correction, field unwarping, normalization, bias field correction, and brain extraction.
 Confound regression and smoothing are exculded from the workflow.
 Instead, fMRIprep provides users with a large set of potential confound regressors that covers many denoising strategies.
@@ -159,7 +159,7 @@ Pierre Bellec plans to preporecess \href{https://openneuro.org/datasets/ds000228
 
 ## Add \code{load\_confounds} to \code{nixtract}
 
-In addition to the main package, there was a collaborative project with the developers of \href{https://github.com/danjgale/nixtract}{nixtract}.
+In addition to the main package, there was a collaborative project with the developers of \href{https://github.com/danjgale/nixtract}{\code{nixtract}}.
 \code{nixtract} is a tool that extract and process timeseries data from neuroimaging files.
 Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \code{nixtract} for reading fMRIPrep confound variables.
 
@@ -167,7 +167,7 @@ Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \c
 
 \code{load\_confounds} can now the following strategies from Ciric et al. \cite{ciric:2017}. The following table highlights the relevant options:
 
-\begin{tabular}{ | m{5em} | c | c | c |  c |  c |  c |  c |  }
+\begin{tabular}{ | m | c | c | c |  c |  c |  c |  c |  }
   \hline
   Strategy             & \code{high\_pass} & \code{motion} & \code{wm\_csf} & \code{global} & \code{compcor} & \code{ica\_aroma} & \code{scrub} \\
   \hline
@@ -186,5 +186,6 @@ Annabelle Harvey and Dan Gale added \code{load\_confounds} as a dependency of \c
   \hline
 \end{tabular}
 
+\smallskip
 The future direction is to integrate \code{load\_confounds} as part of \code{nilearn} for better reach to wider range of users that can be benifited from the package.
 To facilitate the nilearn inegration, we will add \code{sample\_mask} to support volume-sensoring based scrubbing and improve the \code{nilearn} \code{NiftiMasker} related feature.
