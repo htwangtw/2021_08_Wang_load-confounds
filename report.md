@@ -17,7 +17,7 @@ event: 'Brainhack Global 2020 Montreal'
 
 # The title of your report.
 # -------------------------
-title:  ' Load fMRIprep confounds in python'
+title:  'Load fMRIprep confounds in Python'
 
 # Please SET this url to your GitHub project repo!
 # -------------------------------------------------
@@ -65,7 +65,7 @@ author:
 # Please write a brief summary of your project.
 # This abstract will (only) appear on the webpage.
 # -------------------------------------------------
-summary: `load_confounds` is a tool for loading a sensible subset of the fMRI confounds generated with fMRIprep in python (Esteban et al., 2018). The outputs can be directly passes to Nilearn NifitMasker for denoising. The aim at Brainhack MTL 2020 is to implement new strategies as well as imporving the existing functions and documentations for a potential Beta release.
+summary: load_confounds is a tool for loading a sensible subset of the fMRI confounds generated with fMRIprep in python (Esteban et al., 2018). The outputs can be directly passes to Nilearn NifitMasker for denoising. The aim at Brainhack MTL 2020 is to implement new strategies as well as imporving the existing functions and documentations for a potential Beta release.
 
 # Please add 1 to 3 tags
 tags:
