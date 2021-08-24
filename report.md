@@ -41,6 +41,13 @@ affiliations:
   city: Brighton
   state: East Sussex
   country: UK
+- id: aff2
+  orgname: 'name'
+  street: 'street'
+  postcode: 'code'
+  city: city
+  state: state
+  country: country
 
 # Please list the authors.
 # If an author has multiple affiliations, please
