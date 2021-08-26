@@ -183,7 +183,7 @@ A final error would be raised with the list of all parameters missing, rather th
 
 ## Identify test dataset
 
-\href{https://openneuro.org/datasets/ds003}{OpenNeuro ds003} was adopted as the new test data, including all ICA-AROMA related components.
+\href{https://openneuro.org/datasets/ds000003}{OpenNeuro ds000003} was adopted as the new test data, including all ICA-AROMA related components.
 However, non-steady-state volume and motion estmation mertic RMSD \cite{jenkinson:2002} are still missing.
 We plan on preprocessing the nilearn demo dataset (\href{https://openneuro.org/datasets/ds000228}{OpenNeuro ds000228}) with the latest stable fMRIprep LTS release for collecting all possible confounds in the future.
 (Discussions amongs Pierre Bellec, Hao-Ting Wang, Elizabeth DuPre, and Chris Markiewicz)
