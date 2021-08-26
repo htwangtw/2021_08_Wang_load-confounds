@@ -144,7 +144,7 @@ We worked on three strategies:
 ICA-AROMA are only applicable to \code{fMRIprep} output generated with \code{\-\-use\-aroma}.
 \code{fMRIprep} produces files with suffix \code{desc\-smoothAROMAnonaggr\_bold} and output ICA components in the confounds file.
 The using the \code{desc\-smoothAROMAnonaggr\_bold} output is the recommanded way of applying ICA-AROMA and implemented in \code{load\_confounds} as a preset strategy.
-When passing regular fMRIprep output suffixed \code{desc-prepro_bold}, \code{load\_confounds} retreives the noise independent compoenents for aggressive denoising.
+When passing regular fMRIprep output suffixed \code{desc\-prepro_bold}, \code{load\_confounds} retreives the noise independent compoenents for aggressive denoising.
 
 ### Scrubbing
 
