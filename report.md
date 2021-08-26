@@ -77,9 +77,6 @@ author:
   firstname: Steven Lee
   email: smeisler@g.harvard.edu
   affiliation: hu, mit
-  corref: hu
-  # Please make sure that you set corref (corresponding aff) if you have
-  # multiple afiliations
 
 # Please write a brief summary of your project.
 # This abstract will (only) appear on the webpage.
