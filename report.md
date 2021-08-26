@@ -88,7 +88,7 @@ tags:
 
 coi: None
 
-acknow: The authors would like to thank the organizers and attendees of Brainhack Global Montreal 2020.
+acknow: The authors would like to thank the organizers and attendees of Brainhack Global Montreal 2020. Especially, we would like to thank Elizabeth DuPre and Chris Markiewicz for discussions on the choice of test data.
 
 contrib: HTW wrote the software, HTW wrote the report.
 
