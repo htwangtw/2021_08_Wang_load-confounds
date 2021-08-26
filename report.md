@@ -6,7 +6,7 @@
 # ==============================================================
 report_url: https://github.com/htwangtw/2021_08_Wang_load-confounds
 
-last_changed: 2021-08-26 18:25 UTC
+last_changed: 2021-08-26 18:15 UTC
 
 auth_created: htwangtw
 # ===============================================================  | END
@@ -21,7 +21,7 @@ title:  'Load fMRIprep confounds in Python'
 
 # Please SET this url to your GitHub project repo!
 # -------------------------------------------------
-url: https://github.com/htwangtw/2021_08_Wang_load-confounds
+url: https://github.com/SIMEXP/load_confounds
 
 # Please edit affiliation details. The affiliation
 # ids defined here will be used in the author list.
@@ -77,6 +77,7 @@ author:
   firstname: Steven Lee
   email: smeisler@g.harvard.edu
   affiliation: hu, mit
+  corref: hu
 
 # Please write a brief summary of your project.
 # This abstract will (only) appear on the webpage.
