@@ -139,6 +139,26 @@ We worked on three strategies:
   \item Improved the anatomical mask selection for anatomical CompCor \cite{compcor:2007} (contributed by Steven Meisler)
 \end{itemize}
 
+### ICA-AROMA
+
+ICA-AROMA are only applicable to \code{fMRIprep} output generated with \code{\-\-use\-aroma}.
+\code{fMRIprep} produces files with suffix \code{desc\-smoothAROMAnonaggr\_bold} and output ICA components in the confounds file.
+The using the \code{desc\-smoothAROMAnonaggr\_bold} output is the recommanded way of applying ICA-AROMA and implemented in \code{load\_confounds} as a preset strategy.
+When passing regular fMRIprep output suffixed \code{desc-prepro_bold}, \code{load\_confounds} retreives the noise independent compoenents for aggressive denoising.
+
+### Scrubbing
+
+\code{load\_confounds} provides the basic and full approach for scrubbing.
+Basic scrubbing approach flags time frames with excessive motion, using threshold on frame displacement and standardized DVARS to removes volumes above a given framewise displacement threshold.
+For full scrubbing described in Power et al \cite{power:2012}, after censoring volumes as in the basic approach, the full approach further remove continuous segments containing fewer than 5 volumes.
+
+### Anatomical CompCor
+
+\code{fMRIprep} uses three kinds of anatomical masks to compute CompCor components, WM, CSF and the combined of the two.
+The variable names refer to different anatomical masks are specified in the meta data.
+The previous iteration of \code{load\_confounds} did not consider the metadata, hence the difference of masks were not taken into account.
+In the revised aCompCor approach, \code{load\_confounds} provide selections of anaotomical maps (WM, CSF, and combined) to avoid regress relevant signal twice, which may introduce noise.
+
 ## Demo
 
 An executable demo using the nilearn developmental fMRI dataset (\href{https://openneuro.org/datasets/ds000228}{OpenNeuro ds000228}) was added (contributed by Michael W. Weiss).
