@@ -48,6 +48,20 @@ affiliations:
   city: city
   state: state
   country: country
+- id: hu
+  orgname: 'Harvard University'
+  street: '86 Brattle Street'
+  postcode: '02139'
+  city: Cambridge
+  state: MA
+  country: USA
+- id: mit
+  orgname: 'Massachusetts Institute of Technology'
+  street: '46-4033 Vassar Street'
+  postcode: '02139'
+  city: Cambridge
+  state: MA
+  country: USA
 
 # Please list the authors.
 # If an author has multiple affiliations, please
@@ -68,8 +82,8 @@ author:
   surname: Meisler
   firstname: Steven Lee
   email: smeisler@g.harvard.edu
-  affiliation: Harvard University, Massachusetts Institute of Technology
-  corref: Harvard University
+  affiliation: hu, mit
+  corref: hu
   # Please make sure that you set corref (corresponding aff) if you have
   # multiple afiliations
 
